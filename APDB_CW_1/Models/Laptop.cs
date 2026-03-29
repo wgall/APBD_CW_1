@@ -4,4 +4,9 @@ public class Laptop(string nazwaSprzet, string opisSprzet, int maxBatteryCapacit
 {
     public int maxBatteryCapacity { get; set; } = maxBatteryCapacity;
     public float screenSize { get; set; } = screenSize;
+    
+    public override string ToString()
+    {
+        return $"{this.nazwaSprzet};{this.opisSprzet};{this.maxBatteryCapacity};{this.screenSize}";
+    }
 }

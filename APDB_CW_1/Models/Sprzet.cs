@@ -3,10 +3,45 @@ using APDB_CW_1.Services;
 
 namespace APDB_CW_1.Models;
 
-public abstract class Sprzet(string nazwaSprzet, string opisSprzet)
+public abstract class Sprzet
 {
+   public static List<Sprzet> extent = new List<Sprzet>();
+   
    public string sprzetID { get; set; } = GenerateID.generate(7);
-   public string nazwaSprzet { get; set; } = nazwaSprzet;
-   public string opisSprzet { get; set; } = opisSprzet;
+   public string nazwaSprzet { get; set; }
+   public string opisSprzet { get; set; }
    public Availibility dostepnosc { get; set; } = Availibility.AVAILABLE;
+
+   public Sprzet(string nazwaSprzet, string opisSprzet)
+   {
+      this.nazwaSprzet = nazwaSprzet;
+      this.opisSprzet = opisSprzet;
+   }
+   
+   public static void addUser(String nazwaSprzet, String opisSprzet, String type,Dictionary<String, String> specificParams)
+   {
+      try
+      {
+         SprzetHandler.addSprzet(nazwaSprzet, opisSprzet, type, specificParams);
+      }
+      catch (InvalidDataException e)
+      {
+         Console.WriteLine(e.Message);
+      }
+   }
+
+   public static void listSprzet()
+   {
+      SprzetHandler.listSprzet(true);
+   }
+
+   public static void listAvailableSprzet()
+   {
+      SprzetHandler.listSprzet(false);
+   }
+   
+   public override string ToString()
+   {
+      return $"{this.nazwaSprzet};{this.opisSprzet}";
+   }
 }

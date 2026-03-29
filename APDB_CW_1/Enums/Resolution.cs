@@ -5,4 +5,6 @@ public enum Resolution
     FULL_HD,
     HD,
     ULTRA_HD,
+    
+    
 }
