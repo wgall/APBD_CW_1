@@ -6,4 +6,9 @@ public class Camera(string nazwaSprzet, string opisSprzet, int megaPixels, Resol
 {
     public int megaPixels { get; set; } = megaPixels;
     public Resolution resolution { get; set; } = resolution;
+    
+    public override string ToString()
+    {
+        return $"{this.nazwaSprzet};{this.opisSprzet};{this.megaPixels};{this.resolution}";
+    }
 }
