@@ -7,6 +7,6 @@ public class Projector(string nazwaSprzet, string opisSprzet, bool hasBattery, f
     
     public override string ToString()
     {
-        return $"{this.nazwaSprzet};{this.opisSprzet};{this.hasBattery};{this.weight}";
+        return $"{this.nazwaSprzet};{this.opisSprzet};{this.hasBattery};{this.weight};{this.dostepnosc.ToString()}";
     }
 }

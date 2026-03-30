@@ -9,6 +9,6 @@ public class Camera(string nazwaSprzet, string opisSprzet, int megaPixels, Resol
     
     public override string ToString()
     {
-        return $"{this.nazwaSprzet};{this.opisSprzet};{this.megaPixels};{this.resolution}";
+        return $"{this.nazwaSprzet};{this.opisSprzet};{this.megaPixels};{this.resolution};{this.dostepnosc.ToString()}";
     }
 }

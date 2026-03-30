@@ -16,13 +16,14 @@ public abstract class Sprzet
    {
       this.nazwaSprzet = nazwaSprzet;
       this.opisSprzet = opisSprzet;
+      extent.Add(this);
    }
    
-   public static void addUser(String nazwaSprzet, String opisSprzet, String type,Dictionary<String, String> specificParams)
+   public static void addSprzet(String nazwaSprzet, String opisSprzet, String type,Dictionary<String, String> specificParams)
    {
       try
       {
-         SprzetHandler.addSprzet(nazwaSprzet, opisSprzet, type, specificParams);
+         SprzetService.addSprzet(nazwaSprzet, opisSprzet, type, specificParams);
       }
       catch (InvalidDataException e)
       {
@@ -32,12 +33,17 @@ public abstract class Sprzet
 
    public static void listSprzet()
    {
-      SprzetHandler.listSprzet(true);
+      SprzetService.listSprzet(true);
    }
 
    public static void listAvailableSprzet()
    {
-      SprzetHandler.listSprzet(false);
+      SprzetService.listSprzet(false);
+   }
+
+   public void markAsUnavailable()
+   {
+      SprzetService.markAsUnavailable(this);
    }
    
    public override string ToString()

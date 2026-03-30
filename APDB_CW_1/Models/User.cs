@@ -6,6 +6,8 @@ public abstract class User
 {
     public static List<User> extense = new List<User>();
     
+    public static int? maxAvailable = 2;
+    
     public string id { get; set; }
     public string name { get; set; }
     public string surname { get; set; }
@@ -20,18 +22,12 @@ public abstract class User
 
     public static void addUser(String name, String surname, String type)
     {
-        switch (type.ToLower())
-        {
-            case "student":
-                new Student(name, surname);
-                break;
-            case "employee":
-                new Employee(name, surname);
-                break;
-            default:
-                throw new InvalidDataException("Invalid User type provided");
-                break;
-        }
-        Console.WriteLine($"{type} {name} has been added");
+        UserService.addUser(name, surname,type);
+    }
+
+    public void listAllRentendDevices()
+    {
+        Console.WriteLine($"Listing all Rentend devices for user {this.name}");
+        UserService.listAllRentendDevices(this);
     }
 }

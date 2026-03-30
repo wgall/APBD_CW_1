@@ -4,7 +4,7 @@ using APDB_CW_1.Models;
 
 namespace APDB_CW_1.Services;
 
-public class SprzetHandler
+public class SprzetService
 {
     public static void addSprzet(String nazwaSprzet, String opisSprzet, String type,
         Dictionary<String, String> specificParams)
@@ -32,9 +32,9 @@ public class SprzetHandler
                 }
                 break;
             case "camera":
-                if (specificParams.ContainsKey("megaPixles") && specificParams.ContainsKey("resolution"))
+                if (specificParams.ContainsKey("megaPixels") && specificParams.ContainsKey("resolution"))
                 {
-                    new Camera(nazwaSprzet, opisSprzet, Int32.Parse(specificParams["hasBattery"]), parseResolution(specificParams["resolution"]));
+                    new Camera(nazwaSprzet, opisSprzet, Int32.Parse(specificParams["megaPixels"]), parseResolution(specificParams["resolution"]));
                 }
                 else
                 {
@@ -61,8 +61,20 @@ public class SprzetHandler
         {
             if (listUnAvailable || sprzet.dostepnosc == Availibility.AVAILABLE)
             {
-                Console.WriteLine(sprzet);
+                Console.WriteLine(sprzet.ToString());
             }        
+        }
+    }
+
+    public static void markAsUnavailable(Sprzet sprzet)
+    {
+        if (sprzet.dostepnosc == Availibility.AVAILABLE)
+        {
+            sprzet.dostepnosc = Availibility.UNAVAILABLE;
+        }
+        else
+        {
+            Console.WriteLine("Following device is already Unavailable");
         }
     }
     
